@@ -6,6 +6,28 @@
 			"type": "LinkedServiceReference"
 		},
 		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "c1",
+				"type": "String"
+			},
+			{
+				"name": "c2",
+				"type": "String"
+			},
+			{
+				"name": "c3",
+				"type": "String"
+			},
+			{
+				"name": "c4",
+				"type": "String"
+			},
+			{
+				"name": "c5",
+				"type": "String"
+			}
+		],
 		"typeProperties": {
 			"format": {
 				"type": "TextFormat",
