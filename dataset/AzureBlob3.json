@@ -1,0 +1,45 @@
+{
+	"name": "AzureBlob3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureBlob",
+		"structure": [
+			{
+				"name": "c1",
+				"type": "String"
+			},
+			{
+				"name": "c2",
+				"type": "String"
+			},
+			{
+				"name": "c3",
+				"type": "String"
+			},
+			{
+				"name": "c4",
+				"type": "String"
+			},
+			{
+				"name": "c5",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": "AdfTestCICD.csv",
+			"folderPath": "adftest"
+		}
+	}
+}
