@@ -1,0 +1,80 @@
+{
+	"name": "ADFTestScdMainflows",
+	"properties": {
+		"activities": [
+			{
+				"name": "SCDType2Modified",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "SCDType2Modified",
+						"type": "DataFlowReference"
+					}
+				}
+			},
+			{
+				"name": "SCDUpdate",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "SCDType2Modified",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "SCDUpdate",
+						"type": "DataFlowReference"
+					}
+				}
+			},
+			{
+				"name": "SCDInsertUpdate",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "SCDUpdate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "SCDInsertUpdate",
+						"type": "DataFlowReference"
+					}
+				}
+			}
+		],
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

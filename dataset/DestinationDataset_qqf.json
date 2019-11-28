@@ -1,0 +1,297 @@
+{
+	"name": "DestinationDataset_qqf",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureMySql2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureMySqlTable",
+		"schema": [
+			{
+				"name": "memnum",
+				"precision": 19,
+				"scale": 0
+			},
+			{
+				"name": "count_claim_id",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "submethod",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "regnum",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "hdr_admit_dt",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "hdr_discharge_dt",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "att_spec_territory",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "att_spec_specialty",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "bus_unit",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "clm_stus",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "gender",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "orig_versn_create_dt",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "prov_stus",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "provtyps",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "relship",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "relship_descr",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "mem_district1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "cnt_invoice",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "bundle_id1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "bundle_descr1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "impairment",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "provider_id_joined",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "service_provider_id_joined",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "impairment_joined",
+				"precision": 19,
+				"scale": 0
+			},
+			{
+				"name": "saving_identified1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "saving_identified1_new",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "age1",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ldos1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "cover_to_dt1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "fdos1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "cstart_dt1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "cover_from_dt1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "itemchrg1",
+				"precision": 15,
+				"scale": 0
+			},
+			{
+				"name": "paid1",
+				"precision": 15,
+				"scale": 0
+			},
+			{
+				"name": "benhco_ins1",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "benhexcess1",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "dist_cnt_product_id",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "pr_cnt",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "spr_cnt",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "imp_cnt",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "procedure_cnt",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "bundle_id_cnt",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "bundle_descr_cnt",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "pos_code1",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "pos_descr1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "product_id_first",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "cover_status1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "product_id_latest",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "itemchrg_paid_diff",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "claimdt_covertodt_diff",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "fdos_coverfromdt_diff",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "hospital_duration",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "treatment_duration",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "weekday_fdos1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "weekday_ldos1",
+				"precision": 255,
+				"scale": 0
+			},
+			{
+				"name": "ratio_paid_claim",
+				"precision": 15,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"tableName": "`sample2data`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

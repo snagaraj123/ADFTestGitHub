@@ -5,6 +5,7 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"annotations": [],
 		"type": "AzureBlob",
 		"structure": [
 			{
@@ -41,5 +42,6 @@
 			"fileName": "CopiedfileCICD.csv",
 			"folderPath": "adftest"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

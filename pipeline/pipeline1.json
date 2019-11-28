@@ -1,14 +1,14 @@
 {
-	"name": "ADFTestCICD",
+	"name": "pipeline1",
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyData",
+				"name": "Copy Data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
-					"retry": 0,
+					"retry": 2,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
@@ -16,23 +16,26 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "BlobSource",
-						"recursive": false
+						"type": "AzureMySqlSource"
 					},
 					"sink": {
-						"type": "BlobSink"
+						"type": "BlobSink",
+						"copyBehavior": "FlattenHierarchy"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"parallelCopies": 3,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 22
 				},
 				"inputs": [
 					{
-						"referenceName": "AzureBlob3",
+						"referenceName": "AzureMySqlTable1_Source",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureBlob2",
+						"referenceName": "AzureBlob1",
 						"type": "DatasetReference"
 					}
 				]

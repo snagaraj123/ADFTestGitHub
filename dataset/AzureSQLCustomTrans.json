@@ -1,0 +1,26 @@
+{
+	"name": "AzureSQLCustomTrans",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseADFTest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Customer_Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Location",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[Customers_Adf]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

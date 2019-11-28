@@ -1,0 +1,76 @@
+{
+	"name": "SCDType2Modified",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSQLCustomTrans",
+						"type": "DatasetReference"
+					},
+					"name": "CustomerTrans"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureCustmoerDim",
+						"type": "DatasetReference"
+					},
+					"name": "CustomerDim"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "UpdateAndNewInserts"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "UpdateExisting"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ExtractNonExpRecs"
+				},
+				{
+					"name": "RenameColumns"
+				},
+				{
+					"name": "JoinSrcTarget"
+				},
+				{
+					"name": "DeriveNewOrExisting"
+				},
+				{
+					"name": "NewRowSelect"
+				},
+				{
+					"name": "NewRowToInsert"
+				},
+				{
+					"name": "UpdatedRows"
+				},
+				{
+					"name": "SelectUpdateInsert"
+				},
+				{
+					"name": "UpdateUpdate"
+				},
+				{
+					"name": "UnionInserts"
+				},
+				{
+					"name": "GenSKs"
+				}
+			],
+			"script": "\n\nsource(output(\n\t\tCustomer_Id as integer,\n\t\tLocation as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> CustomerTrans\nsource(output(\n\t\tCust_Key as integer,\n\t\tCustomer_Id as integer,\n\t\tLocation as string,\n\t\tBegin_Date as date,\n\t\tEnd_Date as date\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> CustomerDim\nCustomerDim filter(equals(toString(End_Date), '9999-12-31')) ~> ExtractNonExpRecs\nCustomerTrans select(mapColumn(\n\t\tCustomerId = Customer_Id,\n\t\tLoc = Location\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RenameColumns\nRenameColumns, ExtractNonExpRecs join(CustomerId == Customer_Id,\n\tjoinType:'left',\n\tbroadcast: 'none')~> JoinSrcTarget\nJoinSrcTarget derive(CheckNewRow = iif(CustomerId == Customer_Id  && Location != Loc, 1,0),\n\t\tBrandNewRow = iif(notEquals(CustomerId, iif(isNull(Customer_Id), 0, Customer_Id)) , 1, iif((CustomerId == CustomerId && Location != Loc),2,0)),\n\t\tEndDate = '9999-12-31',\n\t\tBeginDate = currentDate(),\n\t\tNewEndDate = currentDate()) ~> DeriveNewOrExisting\nDeriveNewOrExisting filter(equals(BrandNewRow, 1)) ~> NewRowSelect\nNewRowSelect select(mapColumn(\n\t\tCustomer_Id = CustomerId,\n\t\tLocation = Loc,\n\t\tCust_Key,\n\t\tEnd_Date = EndDate,\n\t\tBegin_Date = BeginDate\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> NewRowToInsert\nDeriveNewOrExisting filter(equals(BrandNewRow, 2)) ~> UpdatedRows\nUpdatedRows select(mapColumn(\n\t\tLocation = Loc,\n\t\tCust_Key,\n\t\tCustomer_Id,\n\t\tEnd_Date = EndDate,\n\t\tBegin_Date = BeginDate\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> SelectUpdateInsert\nUpdatedRows select(skipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> UpdateUpdate\nNewRowToInsert, SelectUpdateInsert union(byName: true)~> UnionInserts\nUnionInserts derive(Cust_Key = crc32(Customer_Id, Location),\n\tpartitionBy('hash', 1)) ~> GenSKs\nGenSKs sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['testr.csv'],\n\tpartitionBy('hash', 1)) ~> UpdateAndNewInserts\nUpdateUpdate sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['TestML.csv'],\n\tmapColumn(\n\t\tCust_Key,\n\t\tCustomer_Id,\n\t\tLocation,\n\t\tEnd_Date = NewEndDate\n\t),\n\tpartitionBy('hash', 1)) ~> UpdateExisting"
+		}
+	}
+}

@@ -1,0 +1,58 @@
+{
+	"name": "AzureSqlTableSupplier",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseADFTest",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBName": "@pipeline().parameters.DBName"
+			}
+		},
+		"parameters": {
+			"DBName": {
+				"type": "String",
+				"defaultValue": "CDRS_Test"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "S_SUPPKEY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "S_NAME",
+				"type": "char"
+			},
+			{
+				"name": "S_ADDRESS",
+				"type": "varchar"
+			},
+			{
+				"name": "S_NATIONKEY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "S_PHONE",
+				"type": "char"
+			},
+			{
+				"name": "S_ACCTBAL",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "S_COMMENT",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[SUPPLIER]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

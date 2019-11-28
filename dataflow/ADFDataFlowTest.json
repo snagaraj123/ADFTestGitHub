@@ -1,0 +1,43 @@
+{
+	"name": "ADFDataFlowTest",
+	"properties": {
+		"description": "test",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableSupplier",
+						"type": "DatasetReference"
+					},
+					"name": "Supplier"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTableNation",
+						"type": "DatasetReference"
+					},
+					"name": "Nation"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "SuppCleansedData",
+						"type": "DatasetReference"
+					},
+					"name": "RightSuppData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SupplierNationJoin"
+				},
+				{
+					"name": "NullFilter"
+				}
+			],
+			"script": "\n\nsource(output(\n\t\tS_SUPPKEY as integer,\n\t\tS_NAME as string,\n\t\tS_ADDRESS as string,\n\t\tS_NATIONKEY as integer,\n\t\tS_PHONE as string,\n\t\tS_ACCTBAL as decimal(15,2),\n\t\tS_COMMENT as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> Supplier\nsource(output(\n\t\tN_NATIONKEY as integer,\n\t\tN_NAME as string,\n\t\tN_REGIONKEY as integer,\n\t\tN_COMMENT as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> Nation\nSupplier, Nation join(S_SUPPKEY == N_NATIONKEY,\n\tjoinType:'inner',\n\tbroadcast: 'both')~> SupplierNationJoin\nSupplierNationJoin split(isNull(S_ADDRESS),\n\tdisjoint: true) ~> NullFilter@(SupplierNameNull, OtherWise)\nNullFilter@OtherWise sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['CleansedSuppData.csv'],\n\tpartitionBy('hash', 1),\n\tdateFormat:'MM/dd/yyyy',\n\ttimestampFormat:'MM/dd/yyyy hh:mm:ss') ~> RightSuppData"
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"name": "AzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseNation",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "N_NATIONKEY",
+				"type": "Int32"
+			},
+			{
+				"name": "N_NAME",
+				"type": "String"
+			},
+			{
+				"name": "N_REGIONKEY",
+				"type": "Int32"
+			},
+			{
+				"name": "N_COMMENT",
+				"type": "String"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[NATION]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

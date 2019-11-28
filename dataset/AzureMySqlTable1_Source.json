@@ -1,0 +1,15 @@
+{
+	"name": "AzureMySqlTable1_Source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureMySql1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureMySqlTable",
+		"typeProperties": {
+			"tableName": "`gsmcdr`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

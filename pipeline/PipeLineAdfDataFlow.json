@@ -1,0 +1,52 @@
+{
+	"name": "PipeLineAdfDataFlow",
+	"properties": {
+		"activities": [
+			{
+				"name": "ADFDataFlowTest",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "ADFDataFlowTest",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"Supplier": {
+								"DBName": "@pipeline().parameters.DBName"
+							},
+							"Nation": {
+								"DBName": "@pipeline().parameters.DBName"
+							},
+							"RightSuppData": {
+								"ContainerName": "@pipeline().parameters.ContainerName"
+							}
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"DBName": {
+				"type": "String",
+				"defaultValue": "CDRS_Test"
+			},
+			"FilePath": {
+				"type": "String"
+			},
+			"ContainerName": {
+				"type": "String",
+				"defaultValue": "adftest"
+			}
+		},
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

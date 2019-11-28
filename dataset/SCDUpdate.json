@@ -1,0 +1,41 @@
+{
+	"name": "SCDUpdate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobADFTest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "TestML.csv",
+				"folderPath": "SCD",
+				"container": "adftest"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "_c0",
+				"type": "String"
+			},
+			{
+				"name": "_c1",
+				"type": "String"
+			},
+			{
+				"name": "_c2",
+				"type": "String"
+			},
+			{
+				"name": "_c3",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

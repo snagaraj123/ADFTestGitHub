@@ -1,0 +1,571 @@
+{
+	"name": "CopyPipeline_qqf",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_qqf",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "first//sample2data.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "`sample2data`"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureMySqlSink",
+						"writeBatchSize": 10000,
+						"writeBatchTimeout": "00:00:30"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "memnum",
+									"type": "String"
+								},
+								"sink": {
+									"name": "memnum"
+								}
+							},
+							{
+								"source": {
+									"name": "count_claim_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "count_claim_id"
+								}
+							},
+							{
+								"source": {
+									"name": "submethod",
+									"type": "String"
+								},
+								"sink": {
+									"name": "submethod"
+								}
+							},
+							{
+								"source": {
+									"name": "regnum",
+									"type": "String"
+								},
+								"sink": {
+									"name": "regnum"
+								}
+							},
+							{
+								"source": {
+									"name": "hdr_admit_dt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "hdr_admit_dt"
+								}
+							},
+							{
+								"source": {
+									"name": "hdr_discharge_dt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "hdr_discharge_dt"
+								}
+							},
+							{
+								"source": {
+									"name": "att_spec_territory",
+									"type": "String"
+								},
+								"sink": {
+									"name": "att_spec_territory"
+								}
+							},
+							{
+								"source": {
+									"name": "att_spec_specialty",
+									"type": "String"
+								},
+								"sink": {
+									"name": "att_spec_specialty"
+								}
+							},
+							{
+								"source": {
+									"name": "bus_unit",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bus_unit"
+								}
+							},
+							{
+								"source": {
+									"name": "clm_stus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "clm_stus"
+								}
+							},
+							{
+								"source": {
+									"name": "gender",
+									"type": "String"
+								},
+								"sink": {
+									"name": "gender"
+								}
+							},
+							{
+								"source": {
+									"name": "orig_versn_create_dt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "orig_versn_create_dt"
+								}
+							},
+							{
+								"source": {
+									"name": "prov_stus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "prov_stus"
+								}
+							},
+							{
+								"source": {
+									"name": "provtyps",
+									"type": "String"
+								},
+								"sink": {
+									"name": "provtyps"
+								}
+							},
+							{
+								"source": {
+									"name": "relship",
+									"type": "String"
+								},
+								"sink": {
+									"name": "relship"
+								}
+							},
+							{
+								"source": {
+									"name": "relship_descr",
+									"type": "String"
+								},
+								"sink": {
+									"name": "relship_descr"
+								}
+							},
+							{
+								"source": {
+									"name": "mem_district1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "mem_district1"
+								}
+							},
+							{
+								"source": {
+									"name": "cnt_invoice",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cnt_invoice"
+								}
+							},
+							{
+								"source": {
+									"name": "bundle_id1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bundle_id1"
+								}
+							},
+							{
+								"source": {
+									"name": "bundle_descr1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bundle_descr1"
+								}
+							},
+							{
+								"source": {
+									"name": "impairment",
+									"type": "String"
+								},
+								"sink": {
+									"name": "impairment"
+								}
+							},
+							{
+								"source": {
+									"name": "provider_id_joined",
+									"type": "String"
+								},
+								"sink": {
+									"name": "provider_id_joined"
+								}
+							},
+							{
+								"source": {
+									"name": "service_provider_id_joined",
+									"type": "String"
+								},
+								"sink": {
+									"name": "service_provider_id_joined"
+								}
+							},
+							{
+								"source": {
+									"name": "impairment_joined",
+									"type": "String"
+								},
+								"sink": {
+									"name": "impairment_joined"
+								}
+							},
+							{
+								"source": {
+									"name": "saving_identified1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "saving_identified1"
+								}
+							},
+							{
+								"source": {
+									"name": "saving_identified1_new",
+									"type": "String"
+								},
+								"sink": {
+									"name": "saving_identified1_new"
+								}
+							},
+							{
+								"source": {
+									"name": "age1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "age1"
+								}
+							},
+							{
+								"source": {
+									"name": "ldos1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ldos1"
+								}
+							},
+							{
+								"source": {
+									"name": "cover_to_dt1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cover_to_dt1"
+								}
+							},
+							{
+								"source": {
+									"name": "fdos1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fdos1"
+								}
+							},
+							{
+								"source": {
+									"name": "cstart_dt1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cstart_dt1"
+								}
+							},
+							{
+								"source": {
+									"name": "cover_from_dt1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cover_from_dt1"
+								}
+							},
+							{
+								"source": {
+									"name": "itemchrg1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "itemchrg1"
+								}
+							},
+							{
+								"source": {
+									"name": "paid1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "paid1"
+								}
+							},
+							{
+								"source": {
+									"name": "benhco_ins1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "benhco_ins1"
+								}
+							},
+							{
+								"source": {
+									"name": "benhexcess1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "benhexcess1"
+								}
+							},
+							{
+								"source": {
+									"name": "dist_cnt_product_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dist_cnt_product_id"
+								}
+							},
+							{
+								"source": {
+									"name": "pr_cnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "pr_cnt"
+								}
+							},
+							{
+								"source": {
+									"name": "spr_cnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "spr_cnt"
+								}
+							},
+							{
+								"source": {
+									"name": "imp_cnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "imp_cnt"
+								}
+							},
+							{
+								"source": {
+									"name": "procedure_cnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "procedure_cnt"
+								}
+							},
+							{
+								"source": {
+									"name": "bundle_id_cnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bundle_id_cnt"
+								}
+							},
+							{
+								"source": {
+									"name": "bundle_descr_cnt",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bundle_descr_cnt"
+								}
+							},
+							{
+								"source": {
+									"name": "pos_code1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "pos_code1"
+								}
+							},
+							{
+								"source": {
+									"name": "pos_descr1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "pos_descr1"
+								}
+							},
+							{
+								"source": {
+									"name": "product_id_first",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_id_first"
+								}
+							},
+							{
+								"source": {
+									"name": "cover_status1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cover_status1"
+								}
+							},
+							{
+								"source": {
+									"name": "product_id_latest",
+									"type": "String"
+								},
+								"sink": {
+									"name": "product_id_latest"
+								}
+							},
+							{
+								"source": {
+									"name": "itemchrg_paid_diff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "itemchrg_paid_diff"
+								}
+							},
+							{
+								"source": {
+									"name": "claimdt_covertodt_diff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "claimdt_covertodt_diff"
+								}
+							},
+							{
+								"source": {
+									"name": "fdos_coverfromdt_diff",
+									"type": "String"
+								},
+								"sink": {
+									"name": "fdos_coverfromdt_diff"
+								}
+							},
+							{
+								"source": {
+									"name": "hospital_duration",
+									"type": "String"
+								},
+								"sink": {
+									"name": "hospital_duration"
+								}
+							},
+							{
+								"source": {
+									"name": "treatment_duration",
+									"type": "String"
+								},
+								"sink": {
+									"name": "treatment_duration"
+								}
+							},
+							{
+								"source": {
+									"name": "weekday_fdos1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "weekday_fdos1"
+								}
+							},
+							{
+								"source": {
+									"name": "weekday_ldos1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "weekday_ldos1"
+								}
+							},
+							{
+								"source": {
+									"name": "ratio_paid_claim",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ratio_paid_claim"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_qqf",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_qqf",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

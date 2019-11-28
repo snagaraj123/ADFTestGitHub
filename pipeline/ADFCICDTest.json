@@ -1,9 +1,9 @@
 {
-	"name": "ADFTestCICD",
+	"name": "ADFCICDTest",
 	"properties": {
 		"activities": [
 			{
-				"name": "CopyData",
+				"name": "CopyNationData",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -16,8 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "BlobSource",
-						"recursive": false
+						"type": "SqlSource"
 					},
 					"sink": {
 						"type": "BlobSink"
@@ -26,13 +25,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AzureBlob3",
+						"referenceName": "AzureSqlTable4",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureBlob2",
+						"referenceName": "AzureBlob3",
 						"type": "DatasetReference"
 					}
 				]

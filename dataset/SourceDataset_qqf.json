@@ -1,0 +1,250 @@
+{
+	"name": "SourceDataset_qqf",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blobber",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "sample2data.csv",
+				"container": "first"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "memnum",
+				"type": "String"
+			},
+			{
+				"name": "count_claim_id",
+				"type": "String"
+			},
+			{
+				"name": "submethod",
+				"type": "String"
+			},
+			{
+				"name": "regnum",
+				"type": "String"
+			},
+			{
+				"name": "hdr_admit_dt",
+				"type": "String"
+			},
+			{
+				"name": "hdr_discharge_dt",
+				"type": "String"
+			},
+			{
+				"name": "att_spec_territory",
+				"type": "String"
+			},
+			{
+				"name": "att_spec_specialty",
+				"type": "String"
+			},
+			{
+				"name": "bus_unit",
+				"type": "String"
+			},
+			{
+				"name": "clm_stus",
+				"type": "String"
+			},
+			{
+				"name": "gender",
+				"type": "String"
+			},
+			{
+				"name": "orig_versn_create_dt",
+				"type": "String"
+			},
+			{
+				"name": "prov_stus",
+				"type": "String"
+			},
+			{
+				"name": "provtyps",
+				"type": "String"
+			},
+			{
+				"name": "relship",
+				"type": "String"
+			},
+			{
+				"name": "relship_descr",
+				"type": "String"
+			},
+			{
+				"name": "mem_district1",
+				"type": "String"
+			},
+			{
+				"name": "cnt_invoice",
+				"type": "String"
+			},
+			{
+				"name": "bundle_id1",
+				"type": "String"
+			},
+			{
+				"name": "bundle_descr1",
+				"type": "String"
+			},
+			{
+				"name": "impairment",
+				"type": "String"
+			},
+			{
+				"name": "provider_id_joined",
+				"type": "String"
+			},
+			{
+				"name": "service_provider_id_joined",
+				"type": "String"
+			},
+			{
+				"name": "impairment_joined",
+				"type": "String"
+			},
+			{
+				"name": "saving_identified1",
+				"type": "String"
+			},
+			{
+				"name": "saving_identified1_new",
+				"type": "String"
+			},
+			{
+				"name": "age1",
+				"type": "String"
+			},
+			{
+				"name": "ldos1",
+				"type": "String"
+			},
+			{
+				"name": "cover_to_dt1",
+				"type": "String"
+			},
+			{
+				"name": "fdos1",
+				"type": "String"
+			},
+			{
+				"name": "cstart_dt1",
+				"type": "String"
+			},
+			{
+				"name": "cover_from_dt1",
+				"type": "String"
+			},
+			{
+				"name": "itemchrg1",
+				"type": "String"
+			},
+			{
+				"name": "paid1",
+				"type": "String"
+			},
+			{
+				"name": "benhco_ins1",
+				"type": "String"
+			},
+			{
+				"name": "benhexcess1",
+				"type": "String"
+			},
+			{
+				"name": "dist_cnt_product_id",
+				"type": "String"
+			},
+			{
+				"name": "pr_cnt",
+				"type": "String"
+			},
+			{
+				"name": "spr_cnt",
+				"type": "String"
+			},
+			{
+				"name": "imp_cnt",
+				"type": "String"
+			},
+			{
+				"name": "procedure_cnt",
+				"type": "String"
+			},
+			{
+				"name": "bundle_id_cnt",
+				"type": "String"
+			},
+			{
+				"name": "bundle_descr_cnt",
+				"type": "String"
+			},
+			{
+				"name": "pos_code1",
+				"type": "String"
+			},
+			{
+				"name": "pos_descr1",
+				"type": "String"
+			},
+			{
+				"name": "product_id_first",
+				"type": "String"
+			},
+			{
+				"name": "cover_status1",
+				"type": "String"
+			},
+			{
+				"name": "product_id_latest",
+				"type": "String"
+			},
+			{
+				"name": "itemchrg_paid_diff",
+				"type": "String"
+			},
+			{
+				"name": "claimdt_covertodt_diff",
+				"type": "String"
+			},
+			{
+				"name": "fdos_coverfromdt_diff",
+				"type": "String"
+			},
+			{
+				"name": "hospital_duration",
+				"type": "String"
+			},
+			{
+				"name": "treatment_duration",
+				"type": "String"
+			},
+			{
+				"name": "weekday_fdos1",
+				"type": "String"
+			},
+			{
+				"name": "weekday_ldos1",
+				"type": "String"
+			},
+			{
+				"name": "ratio_paid_claim",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

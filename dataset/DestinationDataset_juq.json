@@ -1,0 +1,16 @@
+{
+	"name": "DestinationDataset_juq",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FileServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "FileShare",
+		"typeProperties": {
+			"fileName": "",
+			"folderPath": "target"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

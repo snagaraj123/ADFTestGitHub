@@ -1,0 +1,28 @@
+{
+	"name": "SCDInsertUpdate",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SCDUpdateInsert",
+						"type": "DatasetReference"
+					},
+					"name": "SCDInsertUodate"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureCustmoerDim",
+						"type": "DatasetReference"
+					},
+					"name": "SCDUpdateInsertNew"
+				}
+			],
+			"transformations": [],
+			"script": "\n\nsource(output(\n\t\tCustomer_Id as integer,\n\t\tLocation as string,\n\t\tCust_Key as integer,\n\t\tEnd_Date as date,\n\t\tBegin_Date as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> SCDInsertUodate\nSCDInsertUodate sink(input(\n\t\tCust_Key as integer,\n\t\tCustomer_Id as integer,\n\t\tLocation as string,\n\t\tBegin_Date as date,\n\t\tEnd_Date as date\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tCust_Key,\n\t\tCustomer_Id,\n\t\tLocation,\n\t\tBegin_Date,\n\t\tEnd_Date\n\t)) ~> SCDUpdateInsertNew"
+		}
+	}
+}

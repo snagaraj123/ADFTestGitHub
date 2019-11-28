@@ -1,0 +1,35 @@
+{
+	"name": "SCDUpdate",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SCDUpdate",
+						"type": "DatasetReference"
+					},
+					"name": "SCDUpdates"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureCustmoerDim",
+						"type": "DatasetReference"
+					},
+					"name": "SCDUpdateUpd"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AlterRow1"
+				},
+				{
+					"name": "Select1"
+				}
+			],
+			"script": "\n\nsource(output(\n\t\tCust_Key as integer,\n\t\tCustmer_Id as integer,\n\t\tLocation as string,\n\t\tEnd_Date as date\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false) ~> SCDUpdates\nSelect1 alterRow(updateIf(Cust_Key>0)) ~> AlterRow1\nSCDUpdates select(mapColumn(\n\t\tCust_Key,\n\t\tEnd_Date\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Select1\nAlterRow1 sink(input(\n\t\tCust_Key as integer,\n\t\tCustomer_Id as integer,\n\t\tLocation as string,\n\t\tBegin_Date as date,\n\t\tEnd_Date as date\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:true,\n\tupsertable:false,\n\tkeys:['Cust_Key'],\n\tformat: 'table',\n\tmapColumn(\n\t\tCust_Key,\n\t\tEnd_Date\n\t)) ~> SCDUpdateUpd"
+		}
+	}
+}

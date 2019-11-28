@@ -1,0 +1,39 @@
+{
+	"name": "AzureCustmoerDim",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseADFTest",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Cust_Key",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Customer_Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Location",
+				"type": "varchar"
+			},
+			{
+				"name": "Begin_Date",
+				"type": "date"
+			},
+			{
+				"name": "End_Date",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[Customers_Dim_Adf]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

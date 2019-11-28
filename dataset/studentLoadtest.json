@@ -1,0 +1,253 @@
+{
+	"name": "studentLoadtest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "StudentName",
+				"type": "varchar"
+			},
+			{
+				"name": "StudentNRIC",
+				"type": "varchar"
+			},
+			{
+				"name": "CitizenshipCode",
+				"type": "varchar"
+			},
+			{
+				"name": "GenderCode",
+				"type": "varchar"
+			},
+			{
+				"name": "RaceCode",
+				"type": "varchar"
+			},
+			{
+				"name": "RegionName",
+				"type": "varchar"
+			},
+			{
+				"name": "Latitude",
+				"type": "varchar"
+			},
+			{
+				"name": "Longitude",
+				"type": "varchar"
+			},
+			{
+				"name": "Latitude_Longitude",
+				"type": "varchar"
+			},
+			{
+				"name": "School",
+				"type": "varchar"
+			},
+			{
+				"name": "CourseDescription",
+				"type": "varchar"
+			},
+			{
+				"name": "AcadQual_Descr",
+				"type": "varchar"
+			},
+			{
+				"name": "AdmitTerm",
+				"type": "varchar"
+			},
+			{
+				"name": "Aggregated_Score_for_O_Level_L1B4_O",
+				"type": "varchar"
+			},
+			{
+				"name": "Aggregated_Score_for_N_Level_MB3_N",
+				"type": "varchar"
+			},
+			{
+				"name": "Choice",
+				"type": "varchar"
+			},
+			{
+				"name": "Attrited",
+				"type": "varchar"
+			},
+			{
+				"name": "Reason",
+				"type": "varchar"
+			},
+			{
+				"name": "GPA1",
+				"type": "varchar"
+			},
+			{
+				"name": "TGPA2",
+				"type": "varchar"
+			},
+			{
+				"name": "TGPA3",
+				"type": "varchar"
+			},
+			{
+				"name": "TGPA4",
+				"type": "varchar"
+			},
+			{
+				"name": "TermAttrition",
+				"type": "varchar"
+			},
+			{
+				"name": "StudentsNotAttendingExams",
+				"type": "varchar"
+			},
+			{
+				"name": "CGPA1",
+				"type": "varchar"
+			},
+			{
+				"name": "CGPA2",
+				"type": "varchar"
+			},
+			{
+				"name": "CGPA3",
+				"type": "varchar"
+			},
+			{
+				"name": "CGPA4",
+				"type": "varchar"
+			},
+			{
+				"name": "RoundedGPA",
+				"type": "varchar"
+			},
+			{
+				"name": "Faculty_Per_Temp",
+				"type": "varchar"
+			},
+			{
+				"name": "Attending_Extra_Lectures",
+				"type": "varchar"
+			},
+			{
+				"name": "Time_SpendinginLibrary",
+				"type": "varchar"
+			},
+			{
+				"name": "Infra_Effective",
+				"type": "varchar"
+			},
+			{
+				"name": "Using_Technology",
+				"type": "varchar"
+			},
+			{
+				"name": "Student_to_Faculty_Ratio",
+				"type": "varchar"
+			},
+			{
+				"name": "Awards_and_Recognition",
+				"type": "varchar"
+			},
+			{
+				"name": "Column37",
+				"type": "varchar"
+			},
+			{
+				"name": "Column38",
+				"type": "varchar"
+			},
+			{
+				"name": "Column39",
+				"type": "varchar"
+			},
+			{
+				"name": "Column40",
+				"type": "varchar"
+			},
+			{
+				"name": "Column41",
+				"type": "varchar"
+			},
+			{
+				"name": "Column42",
+				"type": "varchar"
+			},
+			{
+				"name": "Column43",
+				"type": "varchar"
+			},
+			{
+				"name": "Column44",
+				"type": "varchar"
+			},
+			{
+				"name": "Column45",
+				"type": "varchar"
+			},
+			{
+				"name": "Column46",
+				"type": "varchar"
+			},
+			{
+				"name": "Column47",
+				"type": "varchar"
+			},
+			{
+				"name": "Column48",
+				"type": "varchar"
+			},
+			{
+				"name": "Column49",
+				"type": "varchar"
+			},
+			{
+				"name": "Column50",
+				"type": "varchar"
+			},
+			{
+				"name": "Column51",
+				"type": "varchar"
+			},
+			{
+				"name": "Column52",
+				"type": "varchar"
+			},
+			{
+				"name": "Column53",
+				"type": "varchar"
+			},
+			{
+				"name": "AverageGPA",
+				"type": "varchar"
+			},
+			{
+				"name": "HighRisk",
+				"type": "varchar"
+			},
+			{
+				"name": "HighPotential",
+				"type": "varchar"
+			},
+			{
+				"name": "Avg",
+				"type": "varchar"
+			},
+			{
+				"name": "Studentsleft",
+				"type": "varchar"
+			},
+			{
+				"name": "ChoicebasedonAttrition",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[Student]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

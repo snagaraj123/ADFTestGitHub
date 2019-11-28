@@ -1,0 +1,44 @@
+{
+	"name": "AzureSqlTableNation",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseNation",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DBName": "@pipeline().parameters.DBName"
+			}
+		},
+		"parameters": {
+			"DBName": {
+				"type": "String",
+				"defaultValue": "CDRS_Test"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "N_NATIONKEY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "N_NAME",
+				"type": "char"
+			},
+			{
+				"name": "N_REGIONKEY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "N_COMMENT",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[NATION]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

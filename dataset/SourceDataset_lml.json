@@ -1,0 +1,32 @@
+{
+	"name": "SourceDataset_lml",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "FileServer1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_modifiedDatetimeStart": {
+				"type": "String"
+			},
+			"cw_modifiedDatetimeEnd": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "FileShare",
+		"typeProperties": {
+			"fileName": "data",
+			"folderPath": "",
+			"modifiedDatetimeStart": {
+				"value": "@dataset().cw_modifiedDatetimeStart",
+				"type": "Expression"
+			},
+			"modifiedDatetimeEnd": {
+				"value": "@dataset().cw_modifiedDatetimeEnd",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
